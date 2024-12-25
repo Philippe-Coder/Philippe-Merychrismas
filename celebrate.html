@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Noël</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #e63946, #f1faee);
+            color: #1d3557;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #f4a261;
+            text-shadow: 2px 2px 8px #264653;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #1d3557;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #e63946;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        button:hover {
+            background: #d62828;
+        }
+
+        .snowflakes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10%;
+            animation: fall linear infinite;
+            font-size: 1.5em;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(120vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            color: #1d3557;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">❅</div>
+        <div class="snowflake sapin">🎄</div>
+        <div class="snowflake cadeau">🎁</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake sapin">🎄</div>
+        <div class="snowflake cadeau">🎁</div>
+        <div class="snowflake">⭐</div>
+        <div class="snowflake sapin">🎄</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake cadeau">🎁</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake cadeau">🎁</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">⭐</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake sapin">🎄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake cadeau">🎁</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake sapin">🎄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake cadeau">🎁</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">⭐</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">⭐</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake sapin">🎄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake cadeau">🎁</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake sapin">🎄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake cadeau">🎁</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">⭐</div>
+    </div>
+
+    <div class="container">
+        <h1>🎄 Quiz de Noël 🎄</h1>
+        <p id="welcomeMessage"></p>
+
+        <section id="quizContainer">
+            <div id="quiz1" class="quiz">
+                <h2>Question 1 : Quel est le nom du renne au nez rouge ?</h2>
+                <button onclick="checkAnswer(1, 'Rudolph')">Rudolph</button>
+                <button onclick="checkAnswer(1, 'Comet')">Comet</button>
+                <button onclick="checkAnswer(1, 'Blitzen')">Blitzen</button>
+                <button onclick="checkAnswer(1, 'Vixen')">Vixen</button>
+            </div>
+
+            <div id="quiz2" class="quiz" style="display:none;">
+                <h2>Question 2 : Quelle boisson est souvent associée à Noël ?</h2>
+                <button onclick="checkAnswer(2, 'Lait de poule')">Lait de poule</button>
+                <button onclick="checkAnswer(2, 'Thé glacé')">Thé glacé</button>
+                <button onclick="checkAnswer(2, 'Café')">Café</button>
+                <button onclick="checkAnswer(2, 'Jus d'orange')">Jus d'orange</button>
+            </div>
+
+            <div id="quiz3" class="quiz" style="display:none;">
+                <h2>Question 3 : Quel est le symbole principal de Noël ?</h2>
+                <button onclick="checkAnswer(3, 'Sapin de Noël')">Sapin de Noël</button>
+                <button onclick="checkAnswer(3, 'Étoile de mer')">Étoile de mer</button>
+                <button onclick="checkAnswer(3, 'Tour Eiffel')">Tour Eiffel</button>
+                <button onclick="checkAnswer(3, 'Cactus')">Cactus</button>
+            </div>
+        </section>
+
+        <section id="resultContainer" style="display:none;">
+            <h2 id="resultMessage"></h2>
+            <button id="shareButton">Partager avec mes amis</button>
+        </section>
+    </div>
+
+    <footer>&copy; 2024 - Créé avec ❤ pour Noël</footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const userName = urlParams.get('name');
+        document.getElementById('welcomeMessage').textContent = `Bienvenue, ${userName}! Prêt pour le quiz ?`;
+
+        let score = 0;
+        let currentQuiz = 1;
+
+        function checkAnswer(quizNumber, answer) {
+            const correctAnswers = {
+                1: 'Rudolph',
+                2: 'Lait de poule',
+                3: 'Sapin de Noël'
+            };
+
+            if (answer === correctAnswers[quizNumber]) {
+                score++;
+            }
+
+            document.getElementById(`quiz${quizNumber}`).style.display = 'none';
+            currentQuiz++;
+
+            if (currentQuiz <= 3) {
+                document.getElementById(`quiz${currentQuiz}`).style.display = 'block';
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quizContainer').style.display = 'none';
+            document.getElementById('resultContainer').style.display = 'block';
+            document.getElementById('resultMessage').textContent = `Félicitations, ${userName}! Votre score est de ${score}/3.`;
+        }
+
+        document.getElementById('shareButton').addEventListener('click', function() {
+            const shareText = `🎄 Joyeux Noël ! ${userName} a obtenu un score de ${score}/3 au quiz de Noël. Essayez de faire mieux : ${window.location.origin}`;
+            navigator.share({
+                title: 'Quiz de Noël',
+                text: shareText,
+                url: window.location.origin
+            }).catch(() => alert('Votre appareil ne prend pas en charge le partage.')); 
+        });
+
+        // Animation des flocons, sapins et cadeaux
+        const snowflakes = document.querySelectorAll('.snowflake');
+        snowflakes.forEach(snowflake => {
+            const randomDuration = Math.random() * 5 + 5;
+            const randomLeft = Math.random() * 100;
+            const randomSize = Math.random() * 1 + 0.5;
+
+            snowflake.style.animationDuration = `${randomDuration}s`;
+            snowflake.style.left = `${randomLeft}%`;
+            snowflake.style.fontSize = `${randomSize}em`;
+        });
+    </script>
+</body>
+</html>

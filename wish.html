@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Souhaiter Joyeux Noël</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #e63946, #f1faee);
+            color: #1d3557;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #f4a261;
+            text-shadow: 2px 2px 8px #264653;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #1d3557;
+            margin: 10px 0;
+        }
+
+        .suggestions p {
+            font-size: 1rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .suggestions p:hover {
+            color: #f4a261;
+        }
+
+        textarea {
+            width: 90%;
+            height: 80px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background: #f4a261;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #e76f51;
+        }
+
+        .snowflakes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10%;
+            animation: fall linear infinite;
+            font-size: 1.5em;
+        }
+
+        .snowflake:nth-child(odd) {
+            color: #ffffff;
+        }
+
+        .snowflake:nth-child(even) {
+            color: #f4a261;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(120vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            color: #1d3557;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎄 Souhaiter Joyeux Noël 🎄</h1>
+        <p>Écrivez un message personnalisé ou choisissez-en un ci-dessous :</p>
+        <textarea id="customMessage" placeholder="Votre message..."></textarea>
+        <div class="suggestions">
+            <p onclick="selectSuggestion(this)">🎅 Joyeux Noël ! Que cette journée soit remplie de joie et de magie !</p>
+            <p onclick="selectSuggestion(this)">🎄 Passe un merveilleux Noël entouré de tes proches !</p>
+            <p onclick="selectSuggestion(this)">✨ Que la paix et l’amour règnent en cette période festive. Joyeux Noël !</p>
+        </div>
+        <button onclick="sendWish()">Envoyer</button>
+    </div>
+
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">🎁</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">⭐</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">🎄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">🎁</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">🎄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">🎁</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">⭐</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">⭐</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">🎄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">🎁</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">🎄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">🎁</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">⭐</div>
+    </div>
+
+    <script>
+        const snowflakes = document.querySelectorAll('.snowflake');
+        snowflakes.forEach(snowflake => {
+            const randomDuration = Math.random() * 7 + 5; 
+            const randomLeft = Math.random() * 100;
+            const randomSize = Math.random() * 1 + 0.5;
+
+            snowflake.style.animationDuration = `${randomDuration}s`;
+            snowflake.style.left = `${randomLeft}%`;
+            snowflake.style.fontSize = `${randomSize}em`;
+        });
+
+        function selectSuggestion(element) {
+            document.getElementById('customMessage').value = element.textContent;
+        }
+
+        function sendWish() {
+            const message = document.getElementById('customMessage').value;
+            if (message.trim()) {
+                alert(`Votre message a été envoyé : \n\n"${message}"`);
+            } else {
+                alert('Veuillez écrire ou sélectionner un message avant d\'envoyer.');
+            }
+        }
+    </script>
+
+    <footer>
+        &copy; 2024 - Créé avec ❤ pour les fêtes, Philippe Coder
+    </footer>
+</body>
+</html>
